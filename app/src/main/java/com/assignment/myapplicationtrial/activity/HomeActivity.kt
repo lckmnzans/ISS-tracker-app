@@ -6,6 +6,10 @@ import android.os.Bundle
 import com.assignment.myapplicationtrial.R
 import com.assignment.myapplicationtrial.broadcast.NetworkChangeReceiver
 import com.assignment.myapplicationtrial.databinding.ActivityHomeBinding
+import com.assignment.myapplicationtrial.fragment.MapsFragment
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -15,6 +19,11 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val mapFragment = MapsFragment()
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fragment_view_maps, mapFragment)
+            .commit()
 
         registerNetworkChangeReceiver()
     }
