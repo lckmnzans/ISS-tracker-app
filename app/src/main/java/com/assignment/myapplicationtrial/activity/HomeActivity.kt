@@ -3,13 +3,20 @@ package com.assignment.myapplicationtrial.activity
 import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.PeriodicWorkRequest
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import com.assignment.myapplicationtrial.R
 import com.assignment.myapplicationtrial.broadcast.NetworkChangeReceiver
 import com.assignment.myapplicationtrial.databinding.ActivityHomeBinding
 import com.assignment.myapplicationtrial.fragment.MapsFragment
+import com.assignment.myapplicationtrial.network.ISSTracker
+import com.assignment.myapplicationtrial.network.ISSWorker
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import java.util.concurrent.TimeUnit
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -19,6 +26,10 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val work = OneTimeWorkRequestBuilder<ISSWorker>().addTag(ISSTracker.TRACKER)
+            .build()
+        WorkManager.getInstance(applicationContext).enqueue(work)
 
         val mapFragment = MapsFragment()
         supportFragmentManager.beginTransaction()
@@ -31,6 +42,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         unregisterNetworkChangeReceiver()
+        WorkManager.getInstance(applicationContext).cancelAllWorkByTag(ISSTracker.TRACKER)
     }
 
     private fun registerNetworkChangeReceiver() {
