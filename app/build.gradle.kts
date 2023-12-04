@@ -51,6 +51,12 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
+    // Activity implementation
+    implementation("androidx.activity:activity-ktx:1.8.1")
+
+    // Fragment implementation
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
+
     // Networking implementation
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
@@ -59,4 +65,9 @@ dependencies {
     // Worker implementation
     implementation("androidx.work:work-runtime-ktx:2.7.0")
 
+    val lifecycle_version = "2.5.1"
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    // LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
 }

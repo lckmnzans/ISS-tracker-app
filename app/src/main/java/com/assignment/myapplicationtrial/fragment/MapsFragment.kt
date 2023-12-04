@@ -1,5 +1,6 @@
 package com.assignment.myapplicationtrial.fragment
 
+import android.content.res.Resources
 import android.graphics.Color
 import androidx.fragment.app.Fragment
 
@@ -8,10 +9,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import com.assignment.myapplicationtrial.R
 import com.assignment.myapplicationtrial.databinding.FragmentMapsBinding
 import com.assignment.myapplicationtrial.network.response.ISSPosition
 import com.assignment.myapplicationtrial.utils.ISSPositionLiveData
+import com.assignment.myapplicationtrial.viewmodel.HomeViewModel
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -21,11 +24,13 @@ import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
 
 class MapsFragment : Fragment() {
     private var _binding: FragmentMapsBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: HomeViewModel by activityViewModels()
 
     private val callback = OnMapReadyCallback { googleMap ->
         /**
@@ -37,13 +42,13 @@ class MapsFragment : Fragment() {
          * install it inside the SupportMapFragment. This method will only be triggered once the
          * user has installed Google Play services and returned to the app.
          */
-        //val sydney = LatLng(-34.0, 151.0)
-        //googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        //googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
         googleMap.uiSettings.isMapToolbarEnabled = true
 
         ISSPositionLiveData.issPosition.observe(viewLifecycleOwner) {
             updateMapWithISSPosition(it, googleMap)
+        }
+        viewModel.mapStyle.observe(viewLifecycleOwner) {
+            setMapStyle(googleMap, it)
         }
     }
 
@@ -74,6 +79,8 @@ class MapsFragment : Fragment() {
         gMap.addMarker(MarkerOptions()
             .position(iss)
             .title("ISS Current Position")
+            .anchor(0.5f, 0.5f)
+            .rotation(45f)
             .icon(BitmapDescriptorFactory.fromResource(R.drawable.iss_icon))
         )
         gMap.moveCamera(CameraUpdateFactory.newLatLng(iss))
@@ -86,5 +93,17 @@ class MapsFragment : Fragment() {
             .fillColor(Color.parseColor("#330000FF"))
         gMap.addCircle(circleOptions)
 
+    }
+
+    private fun setMapStyle(mMap: GoogleMap, resId: Int) {
+        try {
+            val success =
+                mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), resId))
+            if (!success) {
+                Log.e("MapsFragment", "Style parsing failed.")
+            }
+        } catch (exception: Resources.NotFoundException) {
+            Log.e("MapsFragment", "Can't find style. Error: ", exception)
+        }
     }
 }

@@ -9,7 +9,7 @@ import com.assignment.myapplicationtrial.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val splashText = "Splash screen!"
+    private val splashText = "ISS Tracker"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
                     handler.postDelayed(this, SPLASH_SCREEN_DELAY / splashText.length)
                 } else {
                     startActivity(Intent(this@MainActivity, HomeActivity::class.java))
+                    finish()
                 }
             }
         }
