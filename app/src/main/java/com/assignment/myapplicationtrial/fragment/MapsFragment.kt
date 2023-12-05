@@ -43,6 +43,7 @@ class MapsFragment : Fragment() {
          * user has installed Google Play services and returned to the app.
          */
         googleMap.uiSettings.isMapToolbarEnabled = true
+        googleMap.uiSettings.isZoomControlsEnabled = true
 
         ISSPositionLiveData.issPosition.observe(viewLifecycleOwner) {
             updateMapWithISSPosition(it, googleMap)

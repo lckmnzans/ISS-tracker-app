@@ -20,13 +20,79 @@
         app:layout_constraintHeight_percent="0.5"
         tools:layout="@layout/fragment_maps" />
 
+    <TextView
+        android:id="@+id/tv_iss_curr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textSize="24sp"
+        android:text="ISS Current Position"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@id/fragment_view_maps"/>
+
     <LinearLayout
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
+        android:id="@+id/layout_iss_position"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/tv_iss_curr">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_iss_curr"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Lat :"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_iss_lat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="20.000"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_iss_curr"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Lon :"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_iss_lon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="20.000"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginBottom="24dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_view_maps"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:orientation="vertical"
         android:gravity="center">
         <TextView

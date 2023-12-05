@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">My Application Trial</string>
+
+    <string-array name="people">
+        <item>Selvya Salsabila</item>
+        <item>Primaning Pangasa</item>
+        <item>Dani Sefianto</item>
+        <item>Qory Wiljanova</item>
+        <item>Lukman Sanusi</item>
+    </string-array>
+    <string-array name="nim">
+        <item>21060120130140</item>
+        <item>21060120130140</item>
+        <item>21060120130140</item>
+        <item>21060120130140</item>
+        <item>21060120130140</item>
+    </string-array>
 </resources>
