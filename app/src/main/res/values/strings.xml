@@ -4,19 +4,22 @@
     <string name="name">Name</string>
     <string name="nim">NIM</string>
     <string name="iss_curr_pos">ISS Current Position</string>
+    <string name="lat_title">Lat :</string>
+    <string name="lon_title">Lon :</string>
+    <string name="change_style">Change map style</string>
 
     <string-array name="people">
-        <item>Selvya Salsabila</item>
-        <item>Primaning Pangasa</item>
+        <item>Selvya Syalsabilla</item>
+        <item>Primaning Pangasa Imanullah</item>
         <item>Dani Sefianto</item>
         <item>Qory Wiljanova</item>
         <item>Lukman Sanusi</item>
     </string-array>
     <string-array name="nim">
-        <item>21060120130140</item>
-        <item>21060120130140</item>
-        <item>21060120130140</item>
-        <item>21060120130140</item>
+        <item>21060120140187</item>
+        <item>21060120140173</item>
+        <item>21060120120024</item>
+        <item>21060120140110</item>
         <item>21060120130140</item>
     </string-array>
 </resources>

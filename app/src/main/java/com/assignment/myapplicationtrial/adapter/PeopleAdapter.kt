@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.assignment.myapplicationtrial.databinding.ItemPersonBinding
 
-class PeopleAdapter(private val people: ArrayList<People>): RecyclerView.Adapter<PeopleAdapter.ViewHolder>() {
+class PeopleAdapter(
+    private val people: ArrayList<People>
+): RecyclerView.Adapter<PeopleAdapter.ViewHolder>() {
 
     class ViewHolder(itemBinding: ItemPersonBinding): RecyclerView.ViewHolder(itemBinding.root) {
         private val tvName = itemBinding.tvName
@@ -22,7 +24,8 @@ class PeopleAdapter(private val people: ArrayList<People>): RecyclerView.Adapter
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding: ItemPersonBinding =
-            ItemPersonBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemPersonBinding
+                .inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 

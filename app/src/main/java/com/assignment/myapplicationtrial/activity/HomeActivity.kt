@@ -66,17 +66,20 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
         when (v.id) {
             binding.btnSwitchMapStyle0.id -> {
                 viewModel.setMapStyleRes(R.raw.map_style0)
-                binding.btnSwitchMapStyle0.foreground = ResourcesCompat.getDrawable(resources, R.drawable.square_shape, null)
+                binding.btnSwitchMapStyle0.foreground = ResourcesCompat
+                    .getDrawable(resources, R.drawable.square_shape, null)
                 setButtonSelected(binding.btnSwitchMapStyle0)
             }
             binding.btnSwitchMapStyle1.id -> {
                 viewModel.setMapStyleRes(R.raw.map_style1)
-                binding.btnSwitchMapStyle1.foreground = ResourcesCompat.getDrawable(resources, R.drawable.square_shape, null)
+                binding.btnSwitchMapStyle1.foreground = ResourcesCompat
+                    .getDrawable(resources, R.drawable.square_shape, null)
                 setButtonSelected(binding.btnSwitchMapStyle1)
             }
             binding.btnSwitchMapStyle2.id -> {
                 viewModel.setMapStyleRes(R.raw.map_style2)
-                binding.btnSwitchMapStyle2.foreground = ResourcesCompat.getDrawable(resources, R.drawable.square_shape, null)
+                binding.btnSwitchMapStyle2.foreground = ResourcesCompat
+                    .getDrawable(resources, R.drawable.square_shape, null)
                 setButtonSelected(binding.btnSwitchMapStyle2)
             }
         }
