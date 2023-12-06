@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">My Application Trial</string>
+    <string name="about">About us</string>
+    <string name="name">Name</string>
+    <string name="nim">NIM</string>
+    <string name="iss_curr_pos">ISS Current Position</string>
 
     <string-array name="people">
         <item>Selvya Salsabila</item>

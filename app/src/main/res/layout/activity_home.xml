@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:textSize="24sp"
-        android:text="ISS Current Position"
+        android:text="@string/iss_curr_pos"
         android:textAlignment="center"
         app:layout_constraintTop_toBottomOf="@id/fragment_view_maps"/>
 

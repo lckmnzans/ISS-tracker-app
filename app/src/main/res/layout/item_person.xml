@@ -17,7 +17,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="Lukman Sanusi" />
+        android:text="@string/name" />
 
     <TextView
         android:id="@+id/tv_nim"
@@ -29,5 +29,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="21060120130140" />
+        android:text="@string/nim" />
 </androidx.constraintlayout.widget.ConstraintLayout>

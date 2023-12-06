@@ -33,6 +33,7 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        registerNetworkChangeReceiver()
         setWorkISSTracking()
         binding.toolbar.tvAppName.text = "ISS REALTIME TRACKER"
         toolbar = ToolbarManager(this)
@@ -48,14 +49,12 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         setButton()
-
-        registerNetworkChangeReceiver()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         unregisterNetworkChangeReceiver()
-        WorkManager.getInstance(applicationContext).cancelAllWorkByTag(ISSTracker.TRACKER)
+        stopWorkISSTracking()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -101,9 +100,14 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setWorkISSTracking() {
-        val work = OneTimeWorkRequestBuilder<ISSWorker>().addTag(ISSTracker.TRACKER)
+        val work = OneTimeWorkRequestBuilder<ISSWorker>()
+            .addTag(ISSTracker.TRACKER)
             .build()
         WorkManager.getInstance(applicationContext).enqueue(work)
+    }
+
+    private fun stopWorkISSTracking() {
+        WorkManager.getInstance(applicationContext).cancelAllWorkByTag(ISSTracker.TRACKER)
     }
 
     private fun setButtonSelected(view: View) {
